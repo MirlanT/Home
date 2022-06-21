@@ -6,7 +6,7 @@ def index_view(request):
     query = request.POST.getlist("name")
     return render(request, 'index.html')
 
-
+lis = []
 class Check():
     def __init__(self, numbers) -> None:
         self.secret_nums = [5, 1, 2, 9]
@@ -55,19 +55,19 @@ def create_article(request):
             }
             return render(request, 'create.html', contex)
         else:
-            lis = []
             second_function = check.guess_numbers()
             lis.append(check.guess_numbers)
             contex = {
                 "red": second_function,
-                "blue": check.guess_numbers()
             }
             return render(request, 'create.html', contex)
 
 
 def index_view10(request):
-
-    return render(request, 'index10.html')
+    contex = {
+        'lst': lis
+    }
+    return render(request, 'index10.html', contex)
 
 
 
