@@ -8,11 +8,8 @@
     <title>Document</title>
 </head>
 <body>
-    {% for article in articles %}
-        <h2>{{article.title}}</h2>
-        <a href="article/?pk={{article.pk}}">подробнее</a>
-        <hr>
-        <a href="article/add/">Добавить</a>
-    {% endfor %}
+{{article.title}}
+{{article.content}}
+{{article.author}}
 </body>
 </html>
