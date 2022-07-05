@@ -1,9 +1,12 @@
 from django.urls import path
-
-from webapp.views import index_view, article_view, article_add
+from . import views
 
 urlpatterns = [
-    path('', index_view),
-    path('article/', article_view),
-    path('article/add/', article_add)
+    path('', views.index, name='index'),
+    path('product/<int:pk>', views.detail, name='detail'),
+    path('create/', views.create, name='create'),
+    path('update/<int:pk>', views.update, name='update'),
+    path('delete/<int:pk>', views.delete, name='delete'),
+    path('products/<str:category>', views.filter_by_category, name='category'),
+    path('search/', views.search, name='search'),
 ]
