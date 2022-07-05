@@ -1,18 +1,22 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    {% for article in articles %}
-        <h2>{{article.title}}</h2>
-        <a href="article/?pk={{article.pk}}">подробнее</a>
-        <hr>
-        <a href="article/add/">Добавить</a>
-    {% endfor %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+    Drake
+{% endblock %}
+
+{% block body %}
+    <form action="/search/">
+        <form class="form-inline">
+            {% for field in form %}
+                <div class="form-group mb-2 d-inline-block">
+                    <label for="phone" class="sr-only">{{ field.label }}</label>
+                    {{ field|add_class:'form-control'|append_attr:'placeholder:Phone' }}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary mb-1">Search</button>
+        </form>
+    </form>
+
+    {% include 'partial/view_products_page.html' %}
+{% endblock %}
