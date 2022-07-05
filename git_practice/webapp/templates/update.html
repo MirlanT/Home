@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+
+{% block body %}
+    <h1 class="text-center mb-3">Phone Update</h1>
+    <form action="/update/{{ product.pk }}" method="POST">
+
+        {% include 'partial/phone_form.html' with btn_text='Update' %}
+
+    </form>
+{% endblock %}
