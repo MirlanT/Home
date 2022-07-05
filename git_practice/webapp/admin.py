@@ -1,13 +1,13 @@
 from django.contrib import admin
+from .models import Article
 
-from webapp.models import Article
+
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['id', 'phone', 'description', 'category', 'count', 'price']
+    list_filter = ['phone']
+    search_fields = ['phone', 'category']
+    fields = ['phone', 'description', 'category', 'count', 'price']
+    list_display_links = ['id', 'phone', 'category']
 
 
-class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'author']
-    list_filter = ['author']
-    search_fields = ['title', 'content']
-    fields = ['title', 'author', 'content']
-    readonly_fields = ['create_at', 'update_at']
-
-admin.site.register(Article,ArticleAdmin)
+admin.site.register(Article, ProductAdmin)
